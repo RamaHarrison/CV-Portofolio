@@ -88,11 +88,13 @@ section {
 }
 
 /* Header & Nav */
+/* Header & Nav */
 header {
   position: fixed;
   top: 0;
   width: 100%;
   padding: 20px 10%;
+  /* Restored to 10% to move logo back right slightly */
   background: transparent;
   /* backdrop-filter: blur(10px); */
   z-index: 1000;
@@ -102,7 +104,8 @@ header {
 }
 
 header.scrolled {
-  padding: 15px 5%;
+  padding: 15px 10%;
+  /* Matched padding */
   /* Expands content to the sides (Geser Kiri/Kanan) */
   background: rgba(2, 6, 23, 0.8);
   /* Re-adds background for readability */
@@ -115,7 +118,8 @@ nav {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  max-width: 1200px;
+  max-width: 100%;
+  /* Removed 1200px limit to allow full width extension */
 }
 
 .logo a {
