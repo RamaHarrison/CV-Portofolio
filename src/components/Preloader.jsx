@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-
 const Preloader = ({ finishLoading }) => {
     const [counter, setCounter] = useState(0);
     const [textIndex, setTextIndex] = useState(0);
@@ -30,11 +29,14 @@ const Preloader = ({ finishLoading }) => {
         return () => clearInterval(timer);
     }, [finishLoading]);
 
-    const slideUp = {
-        initial: { y: 0 },
+    // "Warp Speed" Exit Animation
+    const exitAnimation = {
+        initial: { opacity: 1, scale: 1 },
         exit: {
-            y: "-100vh",
-            transition: { duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }
+            opacity: 0,
+            scale: 1.2,
+            filter: "blur(20px)",
+            transition: { duration: 0.8, ease: "easeInOut" }
         }
     }
 
@@ -42,7 +44,7 @@ const Preloader = ({ finishLoading }) => {
         initial: { opacity: 1 },
         exit: {
             opacity: 0,
-            transition: { duration: 0.5, delay: 0.2 }
+            transition: { duration: 0.5 }
         }
     }
 
@@ -51,7 +53,7 @@ const Preloader = ({ finishLoading }) => {
 
     return (
         <motion.div
-            variants={slideUp}
+            variants={exitAnimation}
             initial="initial"
             exit="exit"
             style={{
@@ -65,7 +67,7 @@ const Preloader = ({ finishLoading }) => {
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontFamily: 'monospace' // Tech font feel
+                fontFamily: 'monospace'
             }}
         >
             <motion.div variants={opacity} initial="initial" exit="exit" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
@@ -119,54 +121,23 @@ const Preloader = ({ finishLoading }) => {
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                     />
 
-                    {/* Center Text */}
+                    {/* Center Text - Updated with Gradient */}
                     <div style={{ position: 'absolute', zIndex: 10 }}>
-                        <span style={{
-                            fontSize: '2rem',
-                            fontWeight: 900,
-                            color: 'white',
-                            letterSpacing: '0.1em',
-                            textShadow: `0 0 10px ${primaryColor}`
-                        }}>RH.</span>
+                        <div style={{ display: 'inline-block' }}>
+                            <span style={{
+                                fontSize: '3rem',
+                                fontWeight: 900,
+                                background: `linear-gradient(to right, ${primaryColor}, ${secondaryColor})`,
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                letterSpacing: '0.1em',
+                                filter: `drop-shadow(0 0 10px ${primaryColor})`
+                            }}>R</span>
+                        </div>
                     </div>
                 </div>
 
-                {/* Counter with Progress Bar Look */}
-                <div style={{ marginTop: '2.5rem', display: 'flex', alignItems: 'center', gap: '10px' }}>
-                    <div style={{
-                        fontSize: '3.5rem',
-                        fontWeight: 'bold',
-                        color: 'white',
-                        textShadow: `0 0 20px ${secondaryColor}`
-                    }}>
-                        {counter}
-                        <span style={{ fontSize: '1rem', marginLeft: '5px', color: primaryColor }}>%</span>
-                    </div>
-                </div>
 
-                {/* Changing System Text */}
-                <div style={{
-                    marginTop: '0.5rem',
-                    fontSize: '0.9rem',
-                    color: primaryColor,
-                    letterSpacing: '0.2em',
-                    minHeight: '20px'
-                }}>
-                    [{["INITIALIZING", "LOADING ASSETS", "SYSTEM READY"][Math.floor((counter / 101) * 3)]}...]
-                </div>
-
-                {/* Bottom Decorative Line */}
-                <motion.div
-                    style={{
-                        marginTop: '20px',
-                        height: '2px',
-                        backgroundColor: secondaryColor,
-                        boxShadow: `0 0 10px ${secondaryColor}`
-                    }}
-                    initial={{ width: 0 }}
-                    animate={{ width: '200px' }}
-                    transition={{ duration: 2 }}
-                />
             </motion.div>
         </motion.div>
     );
