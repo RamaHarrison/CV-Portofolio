@@ -183,7 +183,7 @@ nav {
 }
 
 .content h2 {
-  font-size: 4rem;
+  font-size: 4.5rem;
   line-height: 1.1;
   margin-bottom: 20px;
   font-weight: 800;
@@ -194,7 +194,7 @@ nav {
 }
 
 .content p {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: var(--text-muted);
   margin-bottom: 30px;
   max-width: 500px;
