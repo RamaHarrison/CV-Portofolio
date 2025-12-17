@@ -29,14 +29,14 @@ const Preloader = ({ finishLoading }) => {
         return () => clearInterval(timer);
     }, [finishLoading]);
 
-    // "Warp Speed" Exit Animation
+    // "Turbo Zoom" Exit Animation
     const exitAnimation = {
         initial: { opacity: 1, scale: 1 },
         exit: {
             opacity: 0,
-            scale: 1.2,
-            filter: "blur(20px)",
-            transition: { duration: 0.8, ease: "easeInOut" }
+            scale: 50, // Massive scale up for "zoom in/fly through" effect
+            filter: "blur(10px)",
+            transition: { duration: 0.8, ease: "easeIn" }
         }
     }
 
