@@ -90,13 +90,15 @@ function App() {
             id: 1,
             title: "Social Is Me'24",
             description: "The annual community service program of the Multimedia Nusantara University (UMN) Information Systems Student Association (HIMSI), which focuses on social activities and community empowerment through concrete actions, seminars, and education to create a better and more socially conscious society.",
-            images: ["/images/SIM1.jpg", "/images/DSCF7810.jpg", "/images/sosialisme.JPG"]
+            images: ["/images/SIM1.jpg", "/images/DSCF7810.jpg", "/images/sosialisme.JPG"],
+            link: "https://www.instagram.com/sim_umn/"
         },
         {
             id: 2,
             title: "Disco'25",
             description: "UMN DISCO (D'Information System Community Outbound) is a mandatory annual program for new Information System students at Multimedia Nusantara University (UMN), organized by the Information System Student Association (HIMSI UMN) as an outbound event to build camaraderie, teamwork, and campus familiarity through various games and activities outside the campus area.",
-            images: ["/images/Disco2.jpg", "/images/Disco1.jpg"]
+            images: ["/images/Disco2.jpg", "/images/Disco1.jpg"],
+            link: "https://www.instagram.com/discoumn_si/"
         }
     ];
 
@@ -238,7 +240,7 @@ function App() {
                                         <h2 className="project-title">{org.title}</h2>
                                         <p className="project-desc">{org.description}</p>
                                         <div className="status">
-                                            <a href="#" target="_blank" rel="noopener noreferrer" className="view-more-btn">View Details &rarr;</a>
+                                            <a href={org.link} target="_blank" rel="noopener noreferrer" className="view-more-btn">View Details &rarr;</a>
                                         </div>
                                     </div>
                                 </motion.div>
