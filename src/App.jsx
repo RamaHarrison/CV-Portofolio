@@ -8,10 +8,12 @@ import { TypeAnimation } from 'react-type-animation';
 import Tilt from 'react-parallax-tilt';
 import Magnetic from './components/Magnetic';
 import SpotlightCard from './components/SpotlightCard';
+import Preloader from './components/Preloader';
 import Lenis from 'lenis'
 import './index.css'
 
 function App() {
+    const [isLoading, setIsLoading] = useState(true);
     const [isScrolled, setIsScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { scrollYProgress } = useScroll();
@@ -104,6 +106,12 @@ function App() {
 
     return (
         <>
+            <AnimatePresence mode='wait'>
+                {isLoading && (
+                    <Preloader key="preloader" finishLoading={() => setIsLoading(false)} />
+                )}
+            </AnimatePresence>
+
             <CustomCursor />
             <Background />
 
